@@ -1,7 +1,8 @@
 import numpy as np
 import pandas as pd
 import optparse
-
+from sklearn.ensemble import GradientBoostingClassifier
+import joblib 
 
 def predict(data: pd.DataFrame) -> pd.DataFrame:
     """
@@ -28,15 +29,23 @@ def predict(data: pd.DataFrame) -> pd.DataFrame:
 
     ### YOUR CODE START ###
 
+    
+    x_test = data[data.describe().columns].drop(columns = ["customernumber", "delivpostcode"])
+
+
     # Make all necessary preprocessing steps...
     # (i.e. create features, encoding, feature selection, etc.)
 
     # Load the model and apply to preprocessed data...
+    gbrt = joblib.load("gbrt.joblib")
+  
+    # Get predictions
+    y_pred = gbrt.predict(x_test)
 
     # Some dummy predictions (reference model: send every customer a voucher)
     predictions = pd.DataFrame({
         'customernumber': customernumbers,
-        'prediction': np.zeros(len(data))  # Replace with your predictions
+        'prediction': y_pred  # Replace with your predictions
     })
     
     ### YOUR CODE END ###
