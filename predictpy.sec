@@ -1,8 +1,15 @@
+# Import necessary libraries 
 import numpy as np
 import pandas as pd
-import optparse
-from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.ensemble import RandomForestClassifier # Binary dependent variable
 import joblib 
+from sklearn.tree import DecisionTreeClassifier
+import shap 
+from sklearn.preprocessing import MinMaxScaler, OrdinalEncoder
+from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
+import optparse
+
 
 def predict(data: pd.DataFrame) -> pd.DataFrame:
     """
@@ -29,18 +36,25 @@ def predict(data: pd.DataFrame) -> pd.DataFrame:
 
     ### YOUR CODE START ###
 
-    
-    x_test = data[data.describe().columns].drop(columns = ["customernumber", "delivpostcode"])
+    # Set up lists of categorical & continuous features
+    cat_features = ["salutation", "title", "domain", "newsletter", "model", "paymenttype", "deliverytype",
+                     "voucher", "case", "gift", "entry", "points", "shippingcosts"] 
+    cntnous_features = ["numberitems", "weight", "remi", "cancel", "used", "w0", "w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10"]
 
+    # Combine into one 
+    all_features = cat_features + cntnous_features
 
-    # Make all necessary preprocessing steps...
-    # (i.e. create features, encoding, feature selection, etc.)
+    # Load pre-trained transformer
+    transformer =  joblib.load('data_transformer.joblib')
 
-    # Load the model and apply to preprocessed data...
-    gbrt = joblib.load("gbrt.joblib")
-  
+    # Construct data to base prediction on 
+    x = pd.DataFrame(transformer.transform(data), columns=all_features)
+
+    # Load ML model
+    forest = joblib.load("forest_cv2.joblib")
+
     # Get predictions
-    y_pred = gbrt.predict(x_test)
+    y_pred = forest.predict(x)
 
     # Some dummy predictions (reference model: send every customer a voucher)
     predictions = pd.DataFrame({
