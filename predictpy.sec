@@ -38,7 +38,7 @@ def predict(data: pd.DataFrame) -> pd.DataFrame:
 
     # Set up lists of categorical & continuous features
     cat_features = ["salutation", "title", "domain", "newsletter", "model", "paymenttype", "deliverytype",
-                     "voucher", "case", "gift", "entry", "points", "shippingcosts"] 
+                     "voucher", "case", "gift", "entry", "points", "shippingcosts", "invoicepostcode"] # target90
     cntnous_features = ["numberitems", "weight", "remi", "cancel", "used", "w0", "w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10"]
 
     # Combine into one 
