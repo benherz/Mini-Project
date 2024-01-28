@@ -37089,25 +37089,25 @@
 /***/ })
 /******/ ]);
 //# sourceMappingURL=bundle.js.map </script></head><body>
-        <div class="lime top_div" id="top_divH36ODAB0YR4A9GT"></div>
+        <div class="lime top_div" id="top_divXRDR2RCC7J8Q1U9"></div>
         
         <script>
-        var top_div = d3.select('#top_divH36ODAB0YR4A9GT').classed('lime top_div', true);
+        var top_div = d3.select('#top_divXRDR2RCC7J8Q1U9').classed('lime top_div', true);
         
             var pp_div = top_div.append('div')
                                 .classed('lime predict_proba', true);
             var pp_svg = pp_div.append('svg').style('width', '100%');
-            var pp = new lime.PredictProba(pp_svg, ["No purchase", "Repurchase"], [0.5840785370815588, 0.41592146291844095]);
+            var pp = new lime.PredictProba(pp_svg, ["No purchase", "Repurchase"], [0.6597713650254069, 0.340228634974593]);
             
         
         var exp_div;
             var exp = new lime.Explanation(["No purchase", "Repurchase"]);
         
                 exp_div = top_div.append('div').classed('lime explanation', true);
-                exp.show([["newsletter=0", -0.06341587986792951], ["shippingcosts=0", 0.042797081821924536], ["deliverytype=0", -0.026324585035828595], ["voucher=1", -0.022172387720888795], ["entry=1", 0.015254479578159582], ["w1", 0.006525727254637855], ["case=0", -0.005812762004904541], ["invoicepostcode=42", 0.0057997787639046516], ["domain=0", -0.003955174303160263], ["gift=0", 0.00011557841897668747]], 1, exp_div);
+                exp.show([["newsletter=0", -0.06226292040994806], ["shippingcosts=1", -0.042463505989931254], ["remi", 0.02645595547723254], ["voucher=0", 0.02484365701069273], ["deliverytype=0", -0.023282225858595084], ["entry=0", -0.016833796256227267], ["weight", 0.008264025942632555], ["numberitems", 0.008251803867657498], ["model=0", -0.00757075473102976], ["title=0", 0.007147994398772642]], 1, exp_div);
                 
         var raw_div = top_div.append('div');
-            exp.show_raw_tabular([["newsletter=0", "True", -0.06341587986792951], ["shippingcosts=0", "True", 0.042797081821924536], ["deliverytype=0", "True", -0.026324585035828595], ["voucher=1", "True", -0.022172387720888795], ["entry=1", "True", 0.015254479578159582], ["w1", "0.02", 0.006525727254637855], ["case=0", "True", -0.005812762004904541], ["invoicepostcode=42", "True", 0.0057997787639046516], ["domain=0", "True", -0.003955174303160263], ["gift=0", "True", 0.00011557841897668747]], 1, raw_div);
+            exp.show_raw_tabular([["newsletter=0", "True", -0.06226292040994806], ["shippingcosts=1", "True", -0.042463505989931254], ["remi", "0.00", 0.02645595547723254], ["voucher=0", "True", 0.02484365701069273], ["deliverytype=0", "True", -0.023282225858595084], ["entry=0", "True", -0.016833796256227267], ["weight", "0.01", 0.008264025942632555], ["numberitems", "0.00", 0.008251803867657498], ["model=0", "True", -0.00757075473102976], ["title=0", "True", 0.007147994398772642]], 1, raw_div);
         
         </script>
         </body></html>
